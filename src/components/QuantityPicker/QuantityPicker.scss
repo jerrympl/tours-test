@@ -1,0 +1,25 @@
+.Button {
+  padding: map-get($gutters, 's') map-get($gutters, 'm');
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  &--primary {
+    background-color: $black;
+    color: $white;
+  }
+
+  &--secondary {
+    background-color: $white;
+    color: $black;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: $black;
+  }
+
+  &--tiny {
+    padding: 0;
+  }
+}

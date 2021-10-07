@@ -1,6 +1,5 @@
 import React, { ReactNode, useContext } from 'react';
 import { ModalPropsContext } from './Modal';
-import cx from 'classnames';
 import { StylableComponent, useStyles } from '../../utils/hooks/useStyles';
 import { CloseIcon } from '../Icons';
 
@@ -8,8 +7,6 @@ type Props = {
   onRequestClose: () => {};
   title: ReactNode;
   closeIcon: ReactNode;
-  withBottomLine: boolean;
-  goBackButton: ReactNode;
 };
 
 export type ModalHeaderStyles = {
@@ -28,14 +25,10 @@ const ModalHeader: StylableComponent<Partial<Props>, ModalHeaderStyles> = (
 
   const classes = useStyles<ModalHeaderStyles>(
     {
-      root: cx('Modal__header', {
-        'Modal__header--with-bottom-line': props.withBottomLine,
-      }),
-      closeIcon: cx('Modal__close-icon', {
-        'Modal__close-icon--gray': !context.fullScreen && !props.closeIcon,
-      }),
+      root: 'Modal__header',
+      closeIcon: 'Modal__close-icon',
       closeButton: 'Modal__close-button',
-      title: 'Modal__title',
+      title: 'Modal__title typography-1',
       back: 'Modal__back',
     },
     props.styles,
@@ -43,9 +36,6 @@ const ModalHeader: StylableComponent<Partial<Props>, ModalHeaderStyles> = (
 
   return (
     <div className={classes.root}>
-      {props.goBackButton && (
-        <div className={classes.back}>{props.goBackButton}</div>
-      )}
       {props.title && <div className={classes.title}>{props.title}</div>}
       <button
         className={classes.closeButton}

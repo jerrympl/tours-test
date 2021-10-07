@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fahkwang&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 
+$breakpoints: (
+  'medium': 770px,
+  'large': 1200px,
+  'xlarge': 1408px,
+);
+
 // Colours
 $black: #000;
 $gray: #222;
@@ -35,16 +41,16 @@ $gutters: (
   'l': 40px,
 );
 
-@mixin make-square($size) {
-  width: $size;
-  height: $size;
-}
+// Mixins
+@import "src/mixins";
 
 // Components
+@import "src/components/Modal/Modal";
 @import "src/components/Button/Button";
 @import "src/components/Navbar/Navbar";
 @import "src/components/Hero/Hero";
 @import "src/components/FeaturedItemTile/FeaturedItemTile";
+@import "src/components/BookModal/BookModal";
 
 // Containers
 @import "src/features/booking/containers/BookingContainer";

@@ -3,36 +3,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: $zindex-modal-backdrop;
+  z-index: 1;
 }
 
 .Modal {
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
+  background: $white;
   overflow: auto;
   border-radius: 12px;
   outline: none;
   padding: 0;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 16px;
-  transform: translateY(-1px);
   position: relative;
-  z-index: $zindex-modal;
-  top: $margin-3;
+  z-index: 2;
+  top: 20px;
 
   &__header {
-    height: $modal-header-default-height;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 map-get($gutters, 'l');
 
     &--with-bottom-line {
-      border-bottom: 1px solid $gray-2;
+      border-bottom: 1px solid $gray;
     }
   }
 
   &__title {
-    text-transform: uppercase;
     display: flex;
     align-items: center;
   }
@@ -47,7 +43,7 @@
     margin-left: auto;
 
     &-copy {
-      margin-left: $margin-2;
+      margin-left: 20px;
     }
   }
 
@@ -68,7 +64,7 @@
 
   &__footer {
     padding: map-get($gutters, 'xl') map-get($gutters, 'l');
-    border-top: 1px solid $gray-2;
+    border-top: 1px solid $gray;
 
     @include medium-up() {
       padding: map-get($gutters, 'l');
@@ -98,8 +94,8 @@
 
     .Modal__body {
       @include medium-up() {
-        max-width: 600px;
         margin: 0 auto 0;
+        padding: map-get($gutters, 'l');
         display: flex;
         flex-direction: column;
         justify-content: center;

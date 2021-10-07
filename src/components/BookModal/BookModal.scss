@@ -1,0 +1,18 @@
+.BookModal {
+  &__top-body {
+    display: flex;
+    flex-direction: row;
+  }
+  &__image-wrapper {
+    width: 70%;
+  }
+
+  &__image {
+    width: 100%;
+    min-height: 550px;
+  }
+  &__details {
+    width: 25%;
+    margin-left: 20px;
+  }
+}

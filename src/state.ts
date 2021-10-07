@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 import { CarouselProduct, Product } from './features/booking/types';
 
 export const featuredProductsAtom = atom<Product[]>({
@@ -37,5 +37,13 @@ export const bookedProductsSelector = selector<Product[]>({
     return bookedProductsIds.map((productId) =>
       allProducts.find((p) => p.id === productId),
     );
+  },
+});
+
+export const getProductByIdSelector = selectorFamily({
+  key: 'getProductByIdSelector',
+  get: (id: string) => ({ get }) => {
+    const allProducts = get(allProductsSelector);
+    return allProducts.find((p) => p.id === id);
   },
 });

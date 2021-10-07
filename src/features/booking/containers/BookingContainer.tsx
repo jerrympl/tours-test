@@ -120,6 +120,7 @@ const BookingContainer: FunctionComponent = () => {
         <Button>test {productIdForBooking}</Button>
       </div>
       <BookModal
+        selectedProductId={productIdForBooking}
         isOpen={Boolean(productIdForBooking)}
         onRequestClose={() => setProductIdForBooking(undefined)}
       />
