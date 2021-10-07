@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+// Colours
+$black: #000;
+$gray: #222;
+$white: #fff;
+
+body {
+  font-family: Fahkwang;
+  padding: 0;
+  margin: 0;
+}
+
+.typography-1 {
+  font-family: Fahkwang;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 1.63636px;
+}
+.typography-2 {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.27273px;
+}
+
+$gutters: (
+  's': 18px,
+  'm': 20px,
+  'l': 40px,
+);
+
+@mixin make-square($size) {
+  width: $size;
+  height: $size;
+}
+
+// Components
+@import "src/components/Button/Button";
+@import "src/components/Navbar/Navbar";
+@import "src/components/Hero/Hero";
+@import "src/components/FeaturedItemTile/FeaturedItemTile";
+
+// Containers
+@import "src/features/booking/containers/BookingContainer";

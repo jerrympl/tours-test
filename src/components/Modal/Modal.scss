@@ -1,0 +1,109 @@
+.ReactModal__Overlay {
+  background: rgba($black, 0.3) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $zindex-modal-backdrop;
+}
+
+.Modal {
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 12px;
+  outline: none;
+  padding: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 16px;
+  transform: translateY(-1px);
+  position: relative;
+  z-index: $zindex-modal;
+  top: $margin-3;
+
+  &__header {
+    height: $modal-header-default-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 map-get($gutters, 'l');
+
+    &--with-bottom-line {
+      border-bottom: 1px solid $gray-2;
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
+
+  &__close-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    margin-left: auto;
+
+    &-copy {
+      margin-left: $margin-2;
+    }
+  }
+
+  &__close-icon {
+    @include medium-up() {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__body {
+    @include small-only() {
+      padding: 0 map-get($gutters, 'l');
+    }
+
+    box-sizing: border-box;
+  }
+
+  &__footer {
+    padding: map-get($gutters, 'xl') map-get($gutters, 'l');
+    border-top: 1px solid $gray-2;
+
+    @include medium-up() {
+      padding: map-get($gutters, 'l');
+    }
+  }
+
+  &--full-screen {
+    width: 100%;
+    height: 100%;
+    padding: map-get($gutters, 'ios-notch-safe');
+    max-height: 100vh;
+    transform: translateY(0);
+    border-radius: 0;
+    top: 0;
+    position: fixed;
+
+    .Modal__close-button {
+      margin-left: auto;
+    }
+
+    .Modal__close-icon {
+      @include medium-up() {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .Modal__body {
+      @include medium-up() {
+        max-width: 600px;
+        margin: 0 auto 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}

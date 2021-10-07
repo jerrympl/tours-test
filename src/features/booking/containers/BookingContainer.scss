@@ -1,0 +1,13 @@
+.BookingContainer {
+  width: 100%;
+
+  &__featured-items {
+    display: flex;
+    flex-direction: row;
+    padding: map-get($gutters, 'l');
+  }
+
+  &__featured-item {
+    margin-right: map-get($gutters, 's');
+  }
+}

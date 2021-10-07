@@ -1,0 +1,44 @@
+.Hero {
+  @include make-square(100%);
+  position: relative;
+
+  &__image {
+    @include make-square(100%);
+    object-fit: contain;
+  }
+
+  &__wrapper {
+    @include make-square(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 70px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+
+  &__title {
+    color: $white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  &__subtitle {
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 400;
+    color: $white;
+  }
+}
