@@ -21,7 +21,6 @@ const navigationItems: Array<{ title: string; url: string }> = [
 
 export const Navbar: FunctionComponent = () => {
   const hasBookings = useRecoilValue(hasBookingsSelector);
-  console.log('bookings2', hasBookings);
   return (
     <div className="Navbar">
       <div className="Navbar__logo typography-1">Scandinavian Adventures</div>
