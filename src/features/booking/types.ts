@@ -34,3 +34,13 @@ export type ProductsResponse = {
     items: CarouselProduct[];
   };
 };
+
+export type Booking = {
+  id: string;
+  productId: string,
+  totalPrice: ProductPrice;
+  people: {
+    adults: number;
+    children: number;
+  }
+}

@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { BasketEmptyIcon } from '../Icons';
+import { BasketEmptyIcon, BasketNotEmptyIcon } from '../Icons';
 import { Button } from '../Button/Button';
+import { useRecoilValue } from 'recoil';
+import { hasBookingsSelector } from '../../state';
 
 const navigationItems: Array<{ title: string; url: string }> = [
   {
@@ -18,6 +20,8 @@ const navigationItems: Array<{ title: string; url: string }> = [
 ];
 
 export const Navbar: FunctionComponent = () => {
+  const hasBookings = useRecoilValue(hasBookingsSelector);
+  console.log('bookings2', hasBookings);
   return (
     <div className="Navbar">
       <div className="Navbar__logo typography-1">Scandinavian Adventures</div>
@@ -31,7 +35,7 @@ export const Navbar: FunctionComponent = () => {
         ))}
         <li className="Navbar__menu-item">
           <Button variant="transparent" size="tiny">
-            <BasketEmptyIcon />
+            {hasBookings ? <BasketNotEmptyIcon /> : <BasketEmptyIcon />}
           </Button>
         </li>
       </ul>

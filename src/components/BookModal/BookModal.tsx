@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StylableComponent } from '../../utils/hooks/useStyles';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalBody from '../Modal/ModalBody';
-import { useRecoilValue } from 'recoil';
-import { getProductByIdSelector } from '../../state';
 import { formatPrice } from '../../features/booking/helpers';
 import { QuantityPicker, QuantityPickerStyles } from '../QuantityPicker/QuantityPicker';
 import { limits } from '../../config';
+import { Button } from '../Button/Button';
+import { useBookTour } from '../../features/booking/hooks/useBookTour';
 
 export type BookModalProps = {
   selectedProductId: string;
@@ -25,11 +25,10 @@ const quantityPickerCommonProps = {
 };
 
 const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
-  const [adults, setAdults] = useState<number>(1);
-  const [children, setChildren] = useState<number>(0);
-  const selectedProduct = useRecoilValue(
-    getProductByIdSelector(props.selectedProductId),
-  );
+  const {selectedProduct, setAdults, setChildren, adults, children, bookAction, getTotalCost } = useBookTour({
+    selectedProductId: props.selectedProductId,
+    onSuccess: props.onRequestClose,
+  });
   if (!selectedProduct) {
     return null;
   }
@@ -38,6 +37,7 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
     selectedProduct.price.currencyCode,
     selectedProduct.price.unit,
   );
+
   return (
     <Modal
       fullScreen
@@ -50,6 +50,7 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
           <div className="BookModal__image-wrapper">
             <img
               src={selectedProduct?.media.large?.url}
+              alt={selectedProduct.title}
               className="BookModal__image"
             />
           </div>
@@ -69,6 +70,9 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
                 name="children"
                 onQuantityChanged={(qty) => setChildren(qty)}
               />
+              <p>Total: {formatPrice(getTotalCost(), selectedProduct.price.currencyCode)}</p>
+
+              <Button onClick={() => bookAction()}>Book Experience</Button>
             </div>
           </div>
         </div>

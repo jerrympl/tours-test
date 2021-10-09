@@ -1,5 +1,5 @@
 import { atom, selector, selectorFamily } from 'recoil';
-import { CarouselProduct, Product } from './features/booking/types';
+import { Booking, CarouselProduct, Product } from './features/booking/types';
 
 export const featuredProductsAtom = atom<Product[]>({
   key: 'featuredProductsAtom',
@@ -11,9 +11,17 @@ export const carouselProductsAtom = atom<CarouselProduct[]>({
   default: [],
 });
 
-export const bookedProductsIdsAtom = atom<string[]>({
-  key: 'bookedProductsIdsAtom',
+export const bookingsAtom = atom<Booking[]>({
+  key: 'bookingsAtom',
   default: [],
+});
+
+export const hasBookingsSelector = selector<boolean>({
+  key: 'hasBookingsSelector',
+  get: ({ get }) => {
+    const bookings = get(bookingsAtom);
+    return Boolean(bookings.length);
+  },
 });
 
 export const allProductsSelector = selector<Product[]>({
@@ -27,16 +35,15 @@ export const allProductsSelector = selector<Product[]>({
 
 export const bookedProductsSelector = selector<Product[]>({
   key: 'bookedProductsSelector',
-  // @ts-ignore
   get: ({ get }) => {
-    const bookedProductsIds = get(bookedProductsIdsAtom);
-    if (!bookedProductsIds) {
+    const bookings = get(bookingsAtom);
+    if (!bookings) {
       return [];
     }
     const allProducts = get(allProductsSelector);
-    return bookedProductsIds.map((productId) =>
-      allProducts.find((p) => p.id === productId),
-    );
+    return bookings.map((booking) =>
+      allProducts.find((p) => p.id === booking.productId),
+    ) as Product[];
   },
 });
 

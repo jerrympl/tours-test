@@ -45,15 +45,18 @@ export const QuantityPicker: StylableComponent<
     value: inputValue,
   };
 
-  const onInput = (event: FormEvent<HTMLInputElement>) => {
+  const onChange = (event: FormEvent<HTMLInputElement>) => {
     const parsedValue = parseInt(event.currentTarget.value);
     setInputValue(parsedValue);
-    onQuantityChanged && onQuantityChanged(parsedValue);
   };
 
   useEffect(() => {
     setInputValue(value);
   }, [value]);
+
+  useEffect(() => {
+    onQuantityChanged && onQuantityChanged(inputValue);
+  }, [inputValue])
 
   const increment = () => {
     if (!canIncrement()) {
@@ -82,7 +85,7 @@ export const QuantityPicker: StylableComponent<
       <Button disabled={!canDecrement()} onClick={decrement} styles={adjustButtons}>
         <MinusIcon />
       </Button>
-      <Input {...inputProps} styles={adjustInput} onInput={onInput} />
+      <Input {...inputProps} styles={adjustInput} onChange={onChange} />
       <Button disabled={!canIncrement()} onClick={increment} styles={adjustButtons}>
         <PlusIcon />
       </Button>
