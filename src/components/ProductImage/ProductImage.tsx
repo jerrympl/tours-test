@@ -3,8 +3,8 @@ import { omit } from '../../utils/omit';
 import { Product, ProductMedia } from '../../features/booking/types';
 
 export type ProductImageProps = {
-  product: Product,
-  version?: 'large' | 'small',
+  product: Product;
+  version?: 'large' | 'small';
 } & JSX.IntrinsicElements['img'];
 
 export const ProductImage: FunctionComponent<ProductImageProps> = (props) => {
@@ -13,5 +13,5 @@ export const ProductImage: FunctionComponent<ProductImageProps> = (props) => {
   if (props.version !== undefined) {
     image = props.product.media[props.version] as ProductMedia;
   }
-  return <img {...propsToPass} src={image.url} alt={props.product.title} />
+  return <img {...propsToPass} src={image.url} alt={props.product.title} />;
 };

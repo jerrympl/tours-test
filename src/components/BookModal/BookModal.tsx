@@ -64,7 +64,10 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
       <ModalBody>
         <div className="BookModal__top-body">
           <div className="BookModal__image-wrapper">
-            <ProductImage product={selectedProduct} className="BookModal__image" />
+            <ProductImage
+              product={selectedProduct}
+              className="BookModal__image"
+            />
           </div>
           <div className="BookModal__details">
             <h3>{selectedProduct.title}</h3>
@@ -92,10 +95,15 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
                 )}
               </p>
 
-              <Button styles={(current) => ({
-                ...current,
-                root: `${current.root} BookModal__book-button`
-              })} onClick={() => bookAction()}>Book Experience</Button>
+              <Button
+                styles={(current) => ({
+                  ...current,
+                  root: `${current.root} BookModal__book-button`,
+                })}
+                onClick={() => bookAction()}
+              >
+                Book Experience
+              </Button>
             </div>
           </div>
         </div>
