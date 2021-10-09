@@ -1,14 +1,25 @@
-import { Product, ProductMedia, ProductPrice } from '../../features/booking/types';
-import { getRandomNaturalNumber, getRandomString } from '../../features/booking/helpers';
+import {
+  Product,
+  ProductMedia,
+  ProductPrice,
+} from '../../features/booking/types';
+import {
+  getRandomNaturalNumber,
+  getRandomString,
+} from '../../features/booking/helpers';
 
-export const createProductPrice = (override?: Partial<ProductPrice>): ProductPrice => ({
+export const createProductPrice = (
+  override?: Partial<ProductPrice>,
+): ProductPrice => ({
   value: getRandomNaturalNumber(),
   unit: 'per person',
   currencyCode: 'GBP',
   ...override,
 });
 
-export const createProductMedia = (override?: Partial<ProductMedia>): ProductMedia => ({
+export const createProductMedia = (
+  override?: Partial<ProductMedia>,
+): ProductMedia => ({
   url: getRandomString(),
   height: getRandomNaturalNumber(),
   width: getRandomNaturalNumber(),
@@ -24,5 +35,5 @@ export const createProduct = (override: Partial<Product>): Product => ({
     small: createProductMedia(),
     large: createProductMedia(),
   },
-  ...override
+  ...override,
 });

@@ -4,7 +4,6 @@
 $breakpoints: (
   'medium': 770px,
   'large': 1200px,
-  'xlarge': 1408px,
 );
 
 // Colours
@@ -54,6 +53,8 @@ $gutters: (
 @import "src/components/Hero/Hero";
 @import "src/components/FeaturedItemTile/FeaturedItemTile";
 @import "src/components/BookModal/BookModal";
+@import "src/components/CarouselSection/CarouselSection";
+@import "src/components/CarouselItemTile/CarouselItemTile";
 
 // Containers
 @import "src/features/booking/containers/BookingContainer";

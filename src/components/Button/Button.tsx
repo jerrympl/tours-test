@@ -3,6 +3,7 @@ import { StylableComponent, useStyles } from '../../utils/hooks/useStyles';
 import cx from 'classnames';
 
 export type ButtonProps = {
+  fullWidth?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent';
   size?: 'normal' | 'tiny';
 } & JSX.IntrinsicElements['button'];
@@ -14,6 +15,7 @@ export const Button: StylableComponent<ButtonProps, ButtonStyles> = ({
   children,
   variant = 'primary',
   size = 'normal',
+  fullWidth,
   styles,
   ...propsToPass
 }) => {
@@ -26,6 +28,7 @@ export const Button: StylableComponent<ButtonProps, ButtonStyles> = ({
   const classNames = cx(classes.root, {
     [`Button--${variant}`]: true,
     [`Button--${size}`]: true,
+    'Button--full-width': Boolean(fullWidth),
   });
   return (
     <button className={classNames} type="button" {...propsToPass}>

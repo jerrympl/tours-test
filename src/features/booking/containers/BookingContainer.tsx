@@ -19,6 +19,7 @@ import {
   FeaturedItemTileStyles,
 } from '../../../components/FeaturedItemTile/FeaturedItemTile';
 import BookModal from '../../../components/BookModal/BookModal';
+import { CarouselSection } from '../../../components/CarouselSection/CarouselSection';
 
 const { bookingService } = new DependencyContainer();
 
@@ -107,17 +108,23 @@ const BookingContainer: FunctionComponent = () => {
         {getFeaturedItemsNextSection() && (
           <div className="BookingContainer__featured-items">
             {getFeaturedItemsNextSection().map((product, index) => (
-              <FeaturedItemTile
-                key={product.id}
-                styles={addStylesToFeaturedItemTile}
-                product={product}
-                onExperienceBook={onExperienceBook}
-                isExpanded={index % 2 === 0}
-              />
+              <React.Fragment key={product.id}>
+                <FeaturedItemTile
+                  styles={addStylesToFeaturedItemTile}
+                  product={product}
+                  onExperienceBook={onExperienceBook}
+                  isExpanded={index % 2 === 0}
+                />
+                {index % 2 === 0 && <div className="break"></div>}
+              </React.Fragment>
             ))}
           </div>
         )}
-        <Button>test {productIdForBooking}</Button>
+        <CarouselSection
+          onBookExperience={(productId: string) =>
+            setProductIdForBooking(productId)
+          }
+        />
       </div>
       <BookModal
         selectedProductId={productIdForBooking}

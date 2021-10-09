@@ -16,4 +16,4 @@ export const getRandomNaturalNumber = (min = 1, max = 100) =>
 
 export const getRandomString = (): string => {
   return getRandomNaturalNumber().toString(36);
-}
+};

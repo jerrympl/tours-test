@@ -3,11 +3,18 @@
 
   &__featured-items {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    @include medium-up() {
+      flex-direction: row;
+    }
     padding: map-get($gutters, 'l');
   }
 
   &__featured-item {
     margin-right: map-get($gutters, 's');
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
   }
 }

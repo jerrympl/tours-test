@@ -6,5 +6,5 @@ export const limits = {
   quantities: {
     min: 0,
     max: 20,
-  }
-}
+  },
+};

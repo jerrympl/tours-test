@@ -14,12 +14,16 @@
   }
 
   &__menu {
-    margin-left: auto;
     display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-    align-items: center;
+    flex-direction: column;
+    @include medium-up() {
+      margin-left: auto;
+      flex-direction: row;
+      list-style: none;
+      padding: 0;
+      align-items: center;
+    }
+
 
     &-item {
       margin: 0 map-get($gutters, 'm');

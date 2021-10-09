@@ -1,0 +1,26 @@
+.CarouselItemTile {
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    margin-top: -1px;
+    background-color: $black;
+    color: $white;
+    box-sizing: border-box;
+    padding: 35px 30px 28px 30px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__image {
+    margin-bottom: 0;
+    height: 170px;
+
+    img {
+      @include make-square(100%);
+    }
+  }
+}

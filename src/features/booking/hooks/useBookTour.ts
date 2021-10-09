@@ -5,7 +5,7 @@ import { getRandomString } from '../helpers';
 import { useCallback, useState } from 'react';
 
 export type UseBookTourProps = {
-  selectedProductId: string,
+  selectedProductId: string;
   onSuccess?: () => void;
 };
 
@@ -44,9 +44,9 @@ export const useBookTour = ({
       people: {
         adults,
         children,
-      }
+      },
     };
-    setBookings(bookings => [...bookings, newBooking]);
+    setBookings((bookings) => [...bookings, newBooking]);
     alert('Experience has been booked.');
     if (onSuccess) {
       setTimeout(() => onSuccess(), 200);

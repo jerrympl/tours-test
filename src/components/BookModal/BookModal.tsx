@@ -4,7 +4,10 @@ import Modal from '../Modal/Modal';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalBody from '../Modal/ModalBody';
 import { formatPrice } from '../../features/booking/helpers';
-import { QuantityPicker, QuantityPickerStyles } from '../QuantityPicker/QuantityPicker';
+import {
+  QuantityPicker,
+  QuantityPickerStyles,
+} from '../QuantityPicker/QuantityPicker';
 import { limits } from '../../config';
 import { Button } from '../Button/Button';
 import { useBookTour } from '../../features/booking/hooks/useBookTour';
@@ -25,7 +28,15 @@ const quantityPickerCommonProps = {
 };
 
 const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
-  const {selectedProduct, setAdults, setChildren, adults, children, bookAction, getTotalCost } = useBookTour({
+  const {
+    selectedProduct,
+    setAdults,
+    setChildren,
+    adults,
+    children,
+    bookAction,
+    getTotalCost,
+  } = useBookTour({
     selectedProductId: props.selectedProductId,
     onSuccess: props.onRequestClose,
   });
@@ -70,7 +81,13 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
                 name="children"
                 onQuantityChanged={(qty) => setChildren(qty)}
               />
-              <p>Total: {formatPrice(getTotalCost(), selectedProduct.price.currencyCode)}</p>
+              <p>
+                Total:{' '}
+                {formatPrice(
+                  getTotalCost(),
+                  selectedProduct.price.currencyCode,
+                )}
+              </p>
 
               <Button onClick={() => bookAction()}>Book Experience</Button>
             </div>

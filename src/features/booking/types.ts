@@ -37,10 +37,10 @@ export type ProductsResponse = {
 
 export type Booking = {
   id: string;
-  productId: string,
+  productId: string;
   totalPrice: ProductPrice;
   people: {
     adults: number;
     children: number;
-  }
-}
+  };
+};
