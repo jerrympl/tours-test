@@ -4,7 +4,10 @@
   background-color: $white;
   display: flex;
   flex-direction: row;
-  padding: 0 map-get($gutters, 'm') 0 map-get($gutters, 'l');
+  padding: 0 map-get($gutters, 'm');
+  @include medium-up() {
+    padding: 0 map-get($gutters, 'm') 0 map-get($gutters, 'l');
+  }
   box-sizing: border-box;
   color: $gray;
 
@@ -13,10 +16,19 @@
     align-items: center;
   }
 
-  &__menu {
+  &__hamburger-menu {
     display: flex;
-    flex-direction: column;
+    margin-left: auto;
     @include medium-up() {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include medium-up() {
+      display: flex;
       margin-left: auto;
       flex-direction: row;
       list-style: none;
@@ -26,6 +38,8 @@
 
 
     &-item {
+      display: flex;
+      align-items: center;
       margin: 0 map-get($gutters, 'm');
 
       &-link {

@@ -10,6 +10,7 @@ $breakpoints: (
 $black: #000;
 $gray: #222;
 $gray-light: #EFEDED;
+$gray-xlight: #D8D8D8;
 $white: #fff;
 
 body {
@@ -18,11 +19,24 @@ body {
   margin: 0;
 }
 
+
+$gutters: (
+  's': 18px,
+  'm': 20px,
+  'l': 40px,
+);
+
+// Mixins
+@import "src/mixins";
+
 .typography-1 {
   font-family: Fahkwang;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
+  @include medium-up() {
+    font-size: 18px;
+  }
   line-height: 23px;
   letter-spacing: 1.63636px;
 }
@@ -35,14 +49,12 @@ body {
   letter-spacing: 1.27273px;
 }
 
-$gutters: (
-  's': 18px,
-  'm': 20px,
-  'l': 40px,
-);
+.medium-hide {
+  @include medium-up() {
+    display: none;
+  }
+}
 
-// Mixins
-@import "src/mixins";
 
 // Components
 @import "src/components/Input/Input";
@@ -53,6 +65,7 @@ $gutters: (
 @import "src/components/Hero/Hero";
 @import "src/components/FeaturedItemTile/FeaturedItemTile";
 @import "src/components/BookModal/BookModal";
+@import "src/components/MenuModal/MenuModal";
 @import "src/components/CarouselSection/CarouselSection";
 @import "src/components/CarouselItemTile/CarouselItemTile";
 

@@ -1,0 +1,26 @@
+.MenuModal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: calc(100% - 80px);
+
+  &__navigation {
+    width: 100%;
+    display: block;
+    list-style: none;
+    padding: 0;
+
+    &-item {
+      padding: 26px 0;
+      border-bottom: 1px solid $gray-xlight;
+
+      &-bookings {
+        margin-left: auto;
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
+}

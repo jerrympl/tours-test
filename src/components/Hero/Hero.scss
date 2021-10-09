@@ -17,7 +17,10 @@
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    padding-left: 70px;
+    padding-left: map-get($gutters, 'l');
+    @include medium-up() {
+      padding-left: 70px;
+    }
   }
 
   &__text {
