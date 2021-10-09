@@ -55,7 +55,9 @@ export const FeaturedItemTile: StylableComponent<
       </div>
       <p className={classes.content}>{product.body}</p>
       <p className={classes.subtitle}>From {formattedPrice}</p>
-      <Button onClick={() => props.onExperienceBook(product)}>Book experience</Button>
+      <Button onClick={() => props.onExperienceBook(product)}>
+        Book experience
+      </Button>
     </div>
   );
 };

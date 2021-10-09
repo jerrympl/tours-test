@@ -52,17 +52,36 @@ export const BasketEmptyIcon: FunctionComponent = (props) => {
 };
 export const MinusIcon: FunctionComponent = (props) => {
   return (
-    <svg width="20" height="2" viewBox="0 0 20 2" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <rect width="20" height="2" fill="currentColor"/>
+    <svg
+      width="20"
+      height="2"
+      viewBox="0 0 20 2"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <rect width="20" height="2" fill="currentColor" />
     </svg>
   );
 };
 export const PlusIcon: FunctionComponent = (props) => {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <rect y="9" width="20" height="2" fill="currentColor"/>
-      <rect x="11" width="20" height="2" transform="rotate(90 11 0)" fill="currentColor"/>
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <rect y="9" width="20" height="2" fill="currentColor" />
+      <rect
+        x="11"
+        width="20"
+        height="2"
+        transform="rotate(90 11 0)"
+        fill="currentColor"
+      />
     </svg>
-
   );
 };

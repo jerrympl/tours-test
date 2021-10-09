@@ -1,25 +1,16 @@
-.Button {
-  padding: map-get($gutters, 's') map-get($gutters, 'm');
-  border: 0;
-  outline: none;
-  cursor: pointer;
-
-  &--primary {
-    background-color: $black;
-    color: $white;
+.QuantityPicker {
+  display: flex;
+  &__button {
+    @include make-square(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
   }
 
-  &--secondary {
-    background-color: $white;
-    color: $black;
-  }
-
-  &--transparent {
-    background-color: transparent;
-    color: $black;
-  }
-
-  &--tiny {
-    padding: 0;
+  &__input {
+    width: 80px;
+    height: 24px;
+    margin: 0 10px;
   }
 }

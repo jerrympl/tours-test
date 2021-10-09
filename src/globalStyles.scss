@@ -10,6 +10,7 @@ $breakpoints: (
 // Colours
 $black: #000;
 $gray: #222;
+$gray-light: #EFEDED;
 $white: #fff;
 
 body {
@@ -45,6 +46,8 @@ $gutters: (
 @import "src/mixins";
 
 // Components
+@import "src/components/Input/Input";
+@import "src/components/QuantityPicker/QuantityPicker";
 @import "src/components/Modal/Modal";
 @import "src/components/Button/Button";
 @import "src/components/Navbar/Navbar";

@@ -1,10 +1,11 @@
 .Hero {
-  @include make-square(100%);
+  width: 100%;
+  height: 550px;
   position: relative;
 
   &__image {
     @include make-square(100%);
-    object-fit: contain;
+    object-fit: cover;
   }
 
   &__wrapper {
