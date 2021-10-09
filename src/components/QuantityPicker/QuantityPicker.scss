@@ -1,11 +1,16 @@
 .QuantityPicker {
   display: flex;
+  flex-direction: column;
   &__button {
     @include make-square(40px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 !important;
+  }
+
+  &__wrapper {
+    display: flex;
   }
 
   &__input {

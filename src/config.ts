@@ -8,3 +8,7 @@ export const limits = {
     max: 20,
   },
 };
+export const defaultQuantity = {
+  children: 0,
+  adults: 1,
+};

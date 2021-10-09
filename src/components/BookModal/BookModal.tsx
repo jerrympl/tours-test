@@ -8,9 +8,10 @@ import {
   QuantityPicker,
   QuantityPickerStyles,
 } from '../QuantityPicker/QuantityPicker';
-import { limits } from '../../config';
+import { defaultQuantity, limits } from '../../config';
 import { Button } from '../Button/Button';
 import { useBookTour } from '../../features/booking/hooks/useBookTour';
+import { ProductImage } from '../ProductImage/ProductImage';
 
 export type BookModalProps = {
   selectedProductId: string;
@@ -38,7 +39,11 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
     getTotalCost,
   } = useBookTour({
     selectedProductId: props.selectedProductId,
-    onSuccess: props.onRequestClose,
+    onSuccess: () => {
+      setChildren(defaultQuantity.children);
+      setAdults(defaultQuantity.adults);
+      props.onRequestClose();
+    },
   });
   if (!selectedProduct) {
     return null;
@@ -59,11 +64,7 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
       <ModalBody>
         <div className="BookModal__top-body">
           <div className="BookModal__image-wrapper">
-            <img
-              src={selectedProduct?.media.large?.url}
-              alt={selectedProduct.title}
-              className="BookModal__image"
-            />
+            <ProductImage product={selectedProduct} className="BookModal__image" />
           </div>
           <div className="BookModal__details">
             <h3>{selectedProduct.title}</h3>
@@ -73,12 +74,14 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
                 {...quantityPickerCommonProps}
                 value={adults}
                 name="adults"
+                label="Adults"
                 onQuantityChanged={(qty) => setAdults(qty)}
               />
               <QuantityPicker
                 {...quantityPickerCommonProps}
                 value={children}
                 name="children"
+                label="Children"
                 onQuantityChanged={(qty) => setChildren(qty)}
               />
               <p>
@@ -89,11 +92,14 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
                 )}
               </p>
 
-              <Button onClick={() => bookAction()}>Book Experience</Button>
+              <Button styles={(current) => ({
+                ...current,
+                root: `${current.root} BookModal__book-button`
+              })} onClick={() => bookAction()}>Book Experience</Button>
             </div>
           </div>
         </div>
-        <p>{selectedProduct.body}</p>
+        <p className="BookModal__description">{selectedProduct.body}</p>
       </ModalBody>
     </Modal>
   );

@@ -3,6 +3,7 @@ import { CarouselProduct } from '../../features/booking/types';
 import { formatPrice } from '../../features/booking/helpers';
 import { Button } from '../Button/Button';
 import { StylableComponent, useStyles } from '../../utils/hooks/useStyles';
+import { ProductImage } from '../ProductImage/ProductImage';
 
 export type CarouselItemTileStyles = {
   root: string;
@@ -26,7 +27,7 @@ export const CarouselItemTile: StylableComponent<
   return (
     <div className={classes.root}>
       <div className="CarouselItemTile__image">
-        <img src={product.media.small.url} alt={product.title} />
+        <ProductImage product={product} version="small" />
       </div>
       <div className="CarouselItemTile__content">
         <h4 className="CarouselItemTile__title">{product.title}</h4>

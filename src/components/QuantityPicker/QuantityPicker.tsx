@@ -14,6 +14,7 @@ export type QuantityPickerProps = {
 };
 export type QuantityPickerStyles = {
   root: string;
+  wrapper: string;
 };
 
 const adjustButtons = (current: ButtonStyles) => ({
@@ -33,6 +34,7 @@ export const QuantityPicker: StylableComponent<
   const classes = useStyles(
     {
       root: 'QuantityPicker',
+      wrapper: 'QuantityPicker__wrapper',
     },
     styles,
   );
@@ -82,21 +84,23 @@ export const QuantityPicker: StylableComponent<
   return (
     <div className={classes.root}>
       {label && <label htmlFor={name}>{label}</label>}
-      <Button
-        disabled={!canDecrement()}
-        onClick={decrement}
-        styles={adjustButtons}
-      >
-        <MinusIcon />
-      </Button>
-      <Input {...inputProps} styles={adjustInput} onChange={onChange} />
-      <Button
-        disabled={!canIncrement()}
-        onClick={increment}
-        styles={adjustButtons}
-      >
-        <PlusIcon />
-      </Button>
+      <div className={classes.wrapper}>
+        <Button
+          disabled={!canDecrement()}
+          onClick={decrement}
+          styles={adjustButtons}
+        >
+          <MinusIcon />
+        </Button>
+        <Input {...inputProps} styles={adjustInput} onChange={onChange} />
+        <Button
+          disabled={!canIncrement()}
+          onClick={increment}
+          styles={adjustButtons}
+        >
+          <PlusIcon />
+        </Button>
+      </div>
     </div>
   );
 };
