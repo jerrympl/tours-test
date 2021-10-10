@@ -1,5 +1,4 @@
 import { configure } from 'enzyme';
-import 'jest-localstorage-mock';
 import Adapter from 'enzyme-adapter-react-16';
 import '@testing-library/jest-dom/extend-expect';
 import ReactModal from 'react-modal';

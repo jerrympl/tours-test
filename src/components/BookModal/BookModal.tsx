@@ -96,6 +96,7 @@ const BookModal: StylableComponent<BookModalProps, {}> = (props) => {
               </p>
 
               <Button
+                disabled={children === 0 && adults === 0}
                 styles={(current) => ({
                   ...current,
                   root: `${current.root} BookModal__book-button`,

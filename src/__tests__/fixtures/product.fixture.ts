@@ -26,7 +26,7 @@ export const createProductMedia = (
   ...override,
 });
 
-export const createProduct = (override: Partial<Product>): Product => ({
+export const createProduct = (override?: Partial<Product>): Product => ({
   id: getRandomString(),
   price: createProductPrice(),
   title: getRandomString(),
