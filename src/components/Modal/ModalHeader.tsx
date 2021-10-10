@@ -13,7 +13,6 @@ export type ModalHeaderStyles = {
   root: string;
   closeIcon: string;
   closeButton: string;
-  back: string;
   title: string;
 };
 
@@ -29,7 +28,6 @@ const ModalHeader: StylableComponent<Partial<Props>, ModalHeaderStyles> = (
       closeIcon: 'Modal__close-icon',
       closeButton: 'Modal__close-button',
       title: 'Modal__title typography-1',
-      back: 'Modal__back',
     },
     props.styles,
   );
