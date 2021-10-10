@@ -1,23 +1,34 @@
-import { Booking } from '../types';
+import { Booking, Product } from '../types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { bookingsAtom, getProductByIdSelector } from '../../../state';
 import { getRandomString } from '../helpers';
-import { useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { defaultQuantity } from '../../../config';
 
 export type UseBookTourProps = {
   selectedProductId: string;
   onSuccess?: () => void;
 };
 
+export type UseBookTourValues = {
+  bookAction: () => void;
+  children: number;
+  setChildren: Dispatch<SetStateAction<number>>,
+  adults: number;
+  setAdults: Dispatch<SetStateAction<number>>,
+  selectedProduct: Product | undefined,
+  getTotalCost: () => number;
+}
+
 export const useBookTour = ({
   selectedProductId,
   onSuccess,
-}: UseBookTourProps) => {
+}: UseBookTourProps): UseBookTourValues => {
   const selectedProduct = useRecoilValue(
     getProductByIdSelector(selectedProductId),
   );
-  const [adults, setAdults] = useState<number>(1);
-  const [children, setChildren] = useState<number>(0);
+  const [adults, setAdults] = useState<number>(defaultQuantity.adults);
+  const [children, setChildren] = useState<number>(defaultQuantity.children);
   const setBookings = useSetRecoilState(bookingsAtom);
 
   const getTotalCost = useCallback(() => {
@@ -49,7 +60,7 @@ export const useBookTour = ({
     setBookings((bookings) => [...bookings, newBooking]);
     alert('Experience has been booked.');
     if (onSuccess) {
-      setTimeout(() => onSuccess(), 200);
+      onSuccess();
     }
   };
   return {

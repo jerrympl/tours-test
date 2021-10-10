@@ -10,6 +10,7 @@
 
   &__wrapper {
     @include make-square(100%);
+
     position: absolute;
     top: 0;
     left: 0;
@@ -18,6 +19,7 @@
     align-items: center;
     box-sizing: border-box;
     padding-left: map-get($gutters, 'l');
+
     @include medium-up() {
       padding-left: 70px;
     }
