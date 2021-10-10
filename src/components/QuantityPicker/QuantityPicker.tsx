@@ -49,7 +49,8 @@ export const QuantityPicker: StylableComponent<
 
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     const parsedValue = parseInt(event.currentTarget.value);
-    setInputValue(parsedValue);
+    const valueToSet = isNaN(parsedValue) ? 0 : parsedValue;
+    setInputValue(valueToSet);
   };
 
   useEffect(() => {
