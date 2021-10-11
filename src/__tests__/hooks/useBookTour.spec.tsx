@@ -1,6 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { useBookTour, UseBookTourValues } from '../../features/booking/hooks/useBookTour';
-import { GetAtomValue, MockedRecoilState, mount, waitForComponent } from '../../utils/testUtils';
+import {
+  useBookTour,
+  UseBookTourValues,
+} from '../../features/booking/hooks/useBookTour';
+import {
+  GetAtomValue,
+  MockedRecoilState,
+  mount,
+  waitForComponent,
+} from '../../utils/testUtils';
 import { createProduct } from '../../utils/fixtures/product.fixture';
 import { act } from 'react-dom/test-utils';
 import { bookingsAtom, featuredProductsAtom } from '../../state';
@@ -67,7 +75,9 @@ describe('useBookTour', () => {
     await waitForComponent(component);
     const bookings = JSON.parse(component.find('GetAtomValue').text());
     expect(onSuccess).toHaveBeenCalled();
-    expect(bookings.find(((b: Booking) => b.productId === product1.id))).not.toBeUndefined();
+    expect(
+      bookings.find((b: Booking) => b.productId === product1.id),
+    ).not.toBeUndefined();
   });
 
   it('getTotalCost computes proper price depending on people quantity', async () => {
@@ -80,7 +90,9 @@ describe('useBookTour', () => {
       hook.setAdults(defaultQuantity.adults);
     });
     const computedPrice = hook.getTotalCost();
-    const expectedComputedPrice = (defaultQuantity.adults + defaultQuantity.children) * product1.price.value;
+    const expectedComputedPrice =
+      (defaultQuantity.adults + defaultQuantity.children) *
+      product1.price.value;
     expect(computedPrice).toEqual(expectedComputedPrice);
   });
 
@@ -96,15 +108,16 @@ describe('useBookTour', () => {
     const computedPrice = hook.getTotalCost();
     expect(computedPrice).toEqual(0);
   });
-
 });
 
 const setup = async (selectedProductId: string, onSuccess: () => void) => {
   let hookReturnValue: UseBookTourValues;
-  const atoms = [{
-    atom: featuredProductsAtom,
-    defaultValue: [product1, product2],
-  }];
+  const atoms = [
+    {
+      atom: featuredProductsAtom,
+      defaultValue: [product1, product2],
+    },
+  ];
   const TestComponent: FunctionComponent = () => {
     hookReturnValue = useBookTour({
       selectedProductId,
@@ -112,10 +125,12 @@ const setup = async (selectedProductId: string, onSuccess: () => void) => {
     });
     return null;
   };
-  const component = mount(<MockedRecoilState atoms={atoms}>
-    <TestComponent />
-    <GetAtomValue atom={bookingsAtom} />
-  </MockedRecoilState>);
+  const component = mount(
+    <MockedRecoilState atoms={atoms}>
+      <TestComponent />
+      <GetAtomValue atom={bookingsAtom} />
+    </MockedRecoilState>,
+  );
   await waitForComponent(component);
 
   return {

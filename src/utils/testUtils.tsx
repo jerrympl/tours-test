@@ -6,7 +6,13 @@ import React, {
   useEffect,
 } from 'react';
 import { EnzymePropSelector, mount as enzymeMount, ReactWrapper } from 'enzyme';
-import { RecoilRoot, RecoilState, RecoilValueReadOnly, useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  RecoilRoot,
+  RecoilState,
+  RecoilValueReadOnly,
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil';
 import { act } from 'react-dom/test-utils';
 import { wait } from '@testing-library/react';
 
@@ -90,7 +96,9 @@ export const fillField = async (
   await waitForComponent(component);
 };
 
-export function GetAtomValue<T>({ atom }: {
+export function GetAtomValue<T>({
+  atom,
+}: {
   atom: RecoilState<T> | RecoilValueReadOnly<T>;
 }): JSX.Element {
   return <>{JSON.stringify(useRecoilValue(atom))}</>;

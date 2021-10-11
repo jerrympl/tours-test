@@ -5,11 +5,11 @@ import { Product } from '../types';
 import { DependencyContainer } from '../../../DependencyContainer';
 
 export type UseToursValues = {
-  getFeaturedItemsNextSection: () => Product[],
-  onExperienceBook: any,
-  featuredItems: Product[],
+  getFeaturedItemsNextSection: () => Product[];
+  onExperienceBook: (product?: Product | string) => void;
+  featuredItems: Product[];
   productIdForBooking: string;
-}
+};
 
 const { bookingService } = new DependencyContainer();
 
@@ -41,20 +41,22 @@ export const useTours = (): UseToursValues => {
         setCarouselItems(response.carousel.items);
         setFeaturedItems(response.featured);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         alert('Unable to load tours.');
       });
   }, []);
 
-  useEffect(() => () => {
-    setProductIdForBooking(undefined);
-  }, []);
+  useEffect(
+    () => () => {
+      setProductIdForBooking(undefined);
+    },
+    [],
+  );
 
   return {
     getFeaturedItemsNextSection,
     onExperienceBook,
     featuredItems,
     productIdForBooking,
-  }
+  };
 };

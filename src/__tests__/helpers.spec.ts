@@ -1,4 +1,8 @@
-import { formatPrice, getRandomNaturalNumber, getRandomString } from '../features/booking/helpers';
+import {
+  formatPrice,
+  getRandomNaturalNumber,
+  getRandomString,
+} from '../features/booking/helpers';
 import { CurrencyCodes } from '../features/booking/types';
 
 describe('Helpers', () => {

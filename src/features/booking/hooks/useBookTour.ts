@@ -13,12 +13,12 @@ export type UseBookTourProps = {
 export type UseBookTourValues = {
   bookAction: () => void;
   children: number;
-  setChildren: Dispatch<SetStateAction<number>>,
+  setChildren: Dispatch<SetStateAction<number>>;
   adults: number;
-  setAdults: Dispatch<SetStateAction<number>>,
-  selectedProduct: Product | undefined,
+  setAdults: Dispatch<SetStateAction<number>>;
+  selectedProduct: Product | undefined;
   getTotalCost: () => number;
-}
+};
 
 export const useBookTour = ({
   selectedProductId,

@@ -85,7 +85,11 @@ export const QuantityPicker: StylableComponent<
 
   return (
     <div className={classes.root}>
-      {label && <label className="typography-2 p-b-xs" htmlFor={name}>{label}</label>}
+      {label && (
+        <label className="typography-2 p-b-xs" htmlFor={name}>
+          {label}
+        </label>
+      )}
       <div className={classes.wrapper}>
         <Button
           disabled={!canDecrement()}

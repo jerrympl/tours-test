@@ -65,7 +65,9 @@ describe('<BookModal>', () => {
 
     expect(image.prop('src')).toEqual(product1.media.large?.url);
     expect(title.text()).toEqual(product1.title);
-    expect(component.find('.BookModal__book-button').prop('disabled')).toBeFalsy();
+    expect(
+      component.find('.BookModal__book-button').prop('disabled'),
+    ).toBeFalsy();
   });
 
   it('closes modal when user clicks on X button', async () => {
@@ -119,7 +121,9 @@ describe('<BookModal>', () => {
       getTotalCost: getTotalCostMock,
     });
     const { component } = await setup();
-    expect(component.find('.BookModal__book-button').prop('disabled')).toBeTruthy();
+    expect(
+      component.find('.BookModal__book-button').prop('disabled'),
+    ).toBeTruthy();
   });
 });
 

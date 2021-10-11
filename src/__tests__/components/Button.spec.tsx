@@ -1,12 +1,24 @@
 import React from 'react';
-import { checkIfAllExist, mount, waitForComponent } from '../../utils/testUtils';
-import { Button, ButtonSizes, ButtonVariants } from '../../components/Button/Button';
+import {
+  checkIfAllExist,
+  mount,
+  waitForComponent,
+} from '../../utils/testUtils';
+import {
+  Button,
+  ButtonSizes,
+  ButtonVariants,
+} from '../../components/Button/Button';
 import { act } from 'react-dom/test-utils';
 
 describe('<Button>', () => {
   it('renders different variants correctly', () => {
-    const variants = ['primary', 'secondary', 'transparent'] as ButtonVariants[];
-    variants.forEach(variant => {
+    const variants = [
+      'primary',
+      'secondary',
+      'transparent',
+    ] as ButtonVariants[];
+    variants.forEach((variant) => {
       const component = mount(<Button variant={variant} />);
       expect(component.exists(`.Button--${variant}`)).toBeTruthy();
     });
@@ -14,7 +26,7 @@ describe('<Button>', () => {
 
   it('renders different sizes correctly', () => {
     const sizes = ['normal', 'tiny'] as ButtonSizes[];
-    sizes.forEach(size => {
+    sizes.forEach((size) => {
       const component = mount(<Button size={size} />);
       expect(component.exists(`.Button--${size}`)).toBeTruthy();
     });
@@ -41,4 +53,3 @@ describe('<Button>', () => {
     expect(component.find('Button').text()).toEqual(value);
   });
 });
-

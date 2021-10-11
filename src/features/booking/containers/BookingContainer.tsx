@@ -1,7 +1,4 @@
-import React, {
-  FunctionComponent,
-  useMemo,
-} from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import { Navbar } from '../../../components/Navbar/Navbar';
 import { Button, ButtonStyles } from '../../../components/Button/Button';
@@ -42,7 +39,12 @@ const addStylesToFeaturedItemTile = (current: FeaturedItemTileStyles) => ({
 });
 
 const BookingContainer: FunctionComponent = () => {
-  const { getFeaturedItemsNextSection, onExperienceBook, featuredItems, productIdForBooking } = useTours();
+  const {
+    getFeaturedItemsNextSection,
+    onExperienceBook,
+    featuredItems,
+    productIdForBooking,
+  } = useTours();
 
   const heroProps = useMemo(() => {
     if (!featuredItems.length) {
@@ -85,9 +87,7 @@ const BookingContainer: FunctionComponent = () => {
             ))}
           </div>
         )}
-        <CarouselSection
-          onBookExperience={onExperienceBook}
-        />
+        <CarouselSection onBookExperience={onExperienceBook} />
       </div>
       <BookModal
         selectedProductId={productIdForBooking}
