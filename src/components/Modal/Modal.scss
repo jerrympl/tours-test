@@ -58,15 +58,6 @@
     box-sizing: border-box;
   }
 
-  &__footer {
-    padding: map-get($gutters, 'xl') map-get($gutters, 'l');
-    border-top: 1px solid $gray;
-
-    @include medium-up() {
-      padding: map-get($gutters, 'l');
-    }
-  }
-
   &--full-screen {
     width: 100%;
     height: 100%;

@@ -1,14 +1,8 @@
 import React, {
   FunctionComponent,
-  useCallback,
-  useEffect,
   useMemo,
-  useState,
 } from 'react';
 import { Helmet } from 'react-helmet';
-import { DependencyContainer } from '../../../DependencyContainer';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { carouselProductsAtom, featuredProductsAtom } from '../../../state';
 import { Navbar } from '../../../components/Navbar/Navbar';
 import { Button, ButtonStyles } from '../../../components/Button/Button';
 import { Hero, HeroProps } from '../../../components/Hero/Hero';
@@ -20,8 +14,7 @@ import {
 } from '../../../components/FeaturedItemTile/FeaturedItemTile';
 import BookModal from '../../../components/BookModal/BookModal';
 import { CarouselSection } from '../../../components/CarouselSection/CarouselSection';
-
-const { bookingService } = new DependencyContainer();
+import { useTours } from '../hooks/useTours';
 
 const getHeroProps = (featuredProducts: Product[]): Omit<HeroProps, 'cta'> => {
   const product = featuredProducts[0];
@@ -49,36 +42,8 @@ const addStylesToFeaturedItemTile = (current: FeaturedItemTileStyles) => ({
 });
 
 const BookingContainer: FunctionComponent = () => {
-  const [productIdForBooking, setProductIdForBooking] = useState();
-  const setCarouselItems = useSetRecoilState(carouselProductsAtom);
-  const [featuredItems, setFeaturedItems] = useRecoilState(
-    featuredProductsAtom,
-  );
-  const getFeaturedItemsNextSection = useCallback(() => {
-    if (!featuredItems || featuredItems.length === 0) {
-      return [];
-    }
-    const copy = [...featuredItems];
-    delete copy[0];
-    return copy;
-  }, [featuredItems]);
+  const { getFeaturedItemsNextSection, onExperienceBook, featuredItems, productIdForBooking } = useTours();
 
-  const onExperienceBook = (product: Product) => {
-    setProductIdForBooking(product.id);
-  };
-
-  useEffect(() => {
-    bookingService
-      .getProducts()
-      .then((response) => {
-        setCarouselItems(response.carousel.items);
-        setFeaturedItems(response.featured);
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('Unable to load tours.');
-      });
-  }, []);
   const heroProps = useMemo(() => {
     if (!featuredItems.length) {
       return;
@@ -121,15 +86,13 @@ const BookingContainer: FunctionComponent = () => {
           </div>
         )}
         <CarouselSection
-          onBookExperience={(productId: string) =>
-            setProductIdForBooking(productId)
-          }
+          onBookExperience={onExperienceBook}
         />
       </div>
       <BookModal
         selectedProductId={productIdForBooking}
         isOpen={Boolean(productIdForBooking)}
-        onRequestClose={() => setProductIdForBooking(undefined)}
+        onRequestClose={() => onExperienceBook(undefined)}
       />
     </>
   );

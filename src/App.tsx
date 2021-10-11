@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import './App.css';
 import { RecoilRoot } from 'recoil';
 import './globalStyles.scss';
 import BookingContainer from './features/booking/containers/BookingContainer';

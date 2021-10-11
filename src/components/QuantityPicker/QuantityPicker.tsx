@@ -78,13 +78,14 @@ export const QuantityPicker: StylableComponent<
   const canIncrement = () => {
     return inputValue < max;
   };
+
   const canDecrement = () => {
     return inputValue > min;
   };
 
   return (
     <div className={classes.root}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label className="typography-2 p-b-xs" htmlFor={name}>{label}</label>}
       <div className={classes.wrapper}>
         <Button
           disabled={!canDecrement()}

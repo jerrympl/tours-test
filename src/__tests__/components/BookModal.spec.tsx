@@ -10,7 +10,7 @@ import BookModal, {
   BookModalProps,
 } from '../../components/BookModal/BookModal';
 import { featuredProductsAtom } from '../../state';
-import { createProduct } from '../fixtures/product.fixture';
+import { createProduct } from '../../utils/fixtures/product.fixture';
 import { act } from 'react-dom/test-utils';
 import { useBookTour } from '../../features/booking/hooks/useBookTour';
 import { getRandomNaturalNumber } from '../../features/booking/helpers';
@@ -54,7 +54,6 @@ describe('<BookModal>', () => {
         '.BookModal__details',
         '.BookModal__inputs',
         'QuantityPicker',
-        '.BookModal__quantity-picker',
         '.BookModal__book-button',
         'Button',
         '.BookModal__description',

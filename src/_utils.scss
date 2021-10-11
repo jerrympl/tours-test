@@ -1,0 +1,75 @@
+.medium-hide {
+  @include medium-up() {
+    display: none;
+  }
+}
+
+// Margins
+$sides: (all, x, y, top, bottom, left, right);
+
+@each $gutter,
+$value in $gutters {
+  @each $side in $sides {
+    @if $side=='all' {
+      .m-#{$gutter} {
+        margin: $value !important;
+      }
+    }
+
+    @else if $side=='x' {
+      .m-x-#{$gutter} {
+        margin-left: $value !important;
+        margin-right: $value !important;
+      }
+    }
+
+    @else if $side=='y' {
+      .m-y-#{$gutter} {
+        margin-top: $value !important;
+        margin-bottom: $value !important;
+      }
+    }
+
+    @else {
+      $side-prefix: str-slice($side, 0, 1);
+
+      .m-#{$side-prefix}-#{$gutter} {
+        margin-#{$side}: $value !important;
+      }
+    }
+  }
+}
+// Paddings
+@each $gutter,
+$value in $gutters {
+  @each $side in $sides {
+    @if $side=='all' {
+      .p-#{$gutter} {
+        padding: $value !important;
+      }
+    }
+
+    @else if $side=='x' {
+      .p-x-#{$gutter} {
+        padding-left: $value !important;
+        padding-right: $value !important;
+      }
+    }
+
+    @else if $side=='y' {
+      .p-y-#{$gutter} {
+        padding-top: $value !important;
+        padding-bottom: $value !important;
+      }
+    }
+
+    @else {
+      $side-prefix: str-slice($side, 0, 1);
+
+      .p-#{$side-prefix}-#{$gutter} {
+        padding-#{$side}: $value !important;
+      }
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 import { BookingService } from '../../../features/booking/services/BookingService';
 import { DependencyContainer } from '../../../DependencyContainer';
-import { createProduct } from '../../fixtures/product.fixture';
+import { createProduct } from '../../../utils/fixtures/product.fixture';
 
 const BookingClientMock = {
   getAvailableProducts: jest.fn(),

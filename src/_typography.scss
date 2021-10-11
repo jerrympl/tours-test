@@ -1,0 +1,19 @@
+.typography-1 {
+  font-family: Fahkwang;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  @include medium-up() {
+    font-size: 18px;
+  }
+  line-height: 23px;
+  letter-spacing: 1.63636px;
+}
+.typography-2 {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.27273px;
+}

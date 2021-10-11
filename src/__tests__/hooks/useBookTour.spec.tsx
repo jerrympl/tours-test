@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useBookTour, UseBookTourValues } from '../../features/booking/hooks/useBookTour';
 import { GetAtomValue, MockedRecoilState, mount, waitForComponent } from '../../utils/testUtils';
-import { createProduct } from '../fixtures/product.fixture';
+import { createProduct } from '../../utils/fixtures/product.fixture';
 import { act } from 'react-dom/test-utils';
 import { bookingsAtom, featuredProductsAtom } from '../../state';
 import { defaultQuantity } from '../../config';

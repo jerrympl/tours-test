@@ -24,7 +24,7 @@ const quantityPickerCommonProps = {
   max: limits.quantities.max,
   styles: (current: QuantityPickerStyles) => ({
     ...current,
-    root: `${current.root} BookModal__quantity-picker`,
+    root: `${current.root} m-b-xm`,
   }),
 };
 
